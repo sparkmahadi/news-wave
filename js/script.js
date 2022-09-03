@@ -44,6 +44,7 @@ const newsSection = document.getElementById('news');
 const notifySection = document.getElementById('notification');
 const notify = document.getElementById('notify-message');
 const displayNews = (data, categoryName) =>{
+    console.log(data)
     newsSection.innerHTML='';
     notify.innerHTML=`
     <span id="items-count">4</span> News items found for category : <span id="choosed-category">Entertainment</span>
@@ -54,7 +55,12 @@ const displayNews = (data, categoryName) =>{
     choosedCategory.innerText = `${categoryName}`;
     notifySection.classList.remove('pb-96');
     if(data.length > 0){
-        data.forEach(news => {
+        // sorting the data on the basis of views
+        const sortedData = data.sort((a, b) => {
+            return b.total_view - a.total_view;
+        });
+
+        sortedData.forEach(news => {
             const newCard = document.createElement('div');
             newCard.innerHTML = `
             <div class="card lg:card-side bg-base-100 shadow-xl my-2">
