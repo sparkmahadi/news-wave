@@ -8,7 +8,7 @@ blogButton.addEventListener('click', function(){
     blogs.innerHTML=`
     <div class="bg-white rounded-lg px-7 pb-5 text-center md:text-left">
 
-    <h4 class="font-semibold text-2xl pt-7">Question: What is the difference Among var, let and const?</h4>
+    <h4 class="font-semibold text-2xl pt-7">Question: What is the difference among var, let and const?</h4>
                         <p class="pt-3"><span class='font-bold'>Answer:</span><br>
                         <ul class="list-disc list-inside">
                         <li>var declarations are globally scoped or function scoped while let and const are block scoped.
@@ -29,7 +29,7 @@ blogButton.addEventListener('click', function(){
                           let add = (a, b) => { return a + b};
                           <br>
                           let add = (a, b) => a + b;<br><br>
-                          Curly brackets are not required if only one expression is present.
+                          Curly brackets are not required if only one expression is present.<br><br>
                         </li>
                         <li><span class='font-bold'>Arguments binding :</span> arguments object inside the regular functions contains the list of arguments.<br>
                           On the opposite, The arrow function doesn’t define arguments i.e. they do not have arguments binding.<br>
@@ -45,7 +45,7 @@ blogButton.addEventListener('click', function(){
                       </ul>
                     </p>
                     
-                        <h4 class="font-semibold text-2xl pt-7">Question: What is the difference Among map(), forEach(), filter() and find()?</h4>
+                        <h4 class="font-semibold text-2xl pt-7">Question: What is the difference among map(), forEach(), filter() and find()?</h4>
                         <p class="pt-3"><span class='font-bold'>Answer:</span><br>
                         <span class='font-bold'>1. Map : </span>Map takes a callback and run it against every element on the array but whats makes it unique is it generate a new array based on your existing array.<br>
                           <br>

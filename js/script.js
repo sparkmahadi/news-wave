@@ -44,7 +44,6 @@ const newsSection = document.getElementById('news');
 const notifySection = document.getElementById('notification');
 const notify = document.getElementById('notify-message');
 const displayNews = (data, categoryName) =>{
-    console.log(data)
     newsSection.innerHTML='';
     notify.innerHTML=`
     <span id="items-count">4</span> News items found for category : <span id="choosed-category">Entertainment</span>
@@ -144,7 +143,7 @@ const displayFullNews = (data) =>{
         </div>
     </div>
     `;
-    toggleSpinner(false)
+    toggleSpinner(false);
 }
 
 const toggleSpinner = status => {
@@ -156,13 +155,13 @@ const toggleSpinner = status => {
         loaderSection.classList.add('hidden');
     }
 }
+
 function refresh(elementId){
     const button = document.getElementById(elementId);
     button.addEventListener('click', function(){
         window.location.reload();
     })   
 }
-
 refresh('site-name');
 refresh('home');
 
