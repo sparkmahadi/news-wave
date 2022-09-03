@@ -47,7 +47,7 @@ blogButton.addEventListener('click', function(){
                     
                         <h4 class="font-semibold text-2xl pt-7">Question: What is the difference among map(), forEach(), filter() and find()?</h4>
                         <p class="pt-3"><span class='font-bold'>Answer:</span><br>
-                        <span class='font-bold'>1. Map : </span>Map takes a callback and run it against every element on the array but whats makes it unique is it generate a new array based on your existing array.<br>
+                        <span class='font-bold'>1. Map : </span>Map takes a callback function and run it against every element on the array but whats makes it unique is it generate a new array based on your existing array.<br>
                           <br>
                           <span class='font-bold'>2. Foreach : </span>
                           Foreach takes a callback function and run that callback function on each element of array one by one. But it doesn't return anything like a function.<br>
