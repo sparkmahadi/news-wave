@@ -25,7 +25,7 @@
                     </div>
                     <div class="flex-none">
                       <div class="btn btn-ghost lg:text-xl px-1 lg:px-5">News</div>
-                      <div class="btn btn-ghost lg:text-xl px-1 lg:px-5 pr-3">Blog</div>
+                      <div id="blog" class="btn btn-ghost lg:text-xl px-1 lg:px-5 pr-3">Blog</div>
                       <div class="dropdown dropdown-end">
                         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                           <div class="w-10 rounded-full">
@@ -48,10 +48,10 @@
             </nav>
 
             <section id="notification" class="pb-96">
-                <div id="categories" class="py-2 px- text-center">
+                <div id="categories" class="py-2 text-center">
                 </div>
                 <div class="text-xl font-semibold py-3">
-                    <h4 class="py-2 px-1 bg-white rounded-lg px-3"><span id="items-count">4</span> News items found for category : <span id="choosed-category">Entertainment</span></h4>
+                    <h4 id="notify-message" class="py-2 px-1 bg-white rounded-lg px-3"><span id="items-count">4</span> News items found for category : <span id="choosed-category">Entertainment</span></h4>
                 </div>
             </section>
 
@@ -83,5 +83,6 @@
           <p class="text-center text-lg p-5">Copyright 2021 News Portal</p>
         </footer>
         <script src="js/script.js"></script>
+        <script src="js/blog.js"></script>
 </body>
 </html>

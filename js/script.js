@@ -41,15 +41,19 @@ const loadNews = async(categoryId, categoryName) =>{
 
 
 const newsSection = document.getElementById('news');
-const newsCount = document.getElementById('items-count');
-const choosedCategory = document.getElementById('choosed-category');
 const notifySection = document.getElementById('notification');
+const notify = document.getElementById('notify-message');
 const displayNews = (data, categoryName) =>{
     newsSection.innerHTML='';
+    notify.innerHTML=`
+    <span id="items-count">4</span> News items found for category : <span id="choosed-category">Entertainment</span>
+    `;
+    const newsCount = document.getElementById('items-count');
+    const choosedCategory = document.getElementById('choosed-category');
+    newsCount.innerText = `${data.length}`;
+    choosedCategory.innerText = `${categoryName}`;
+    notifySection.classList.remove('pb-96');
     if(data.length > 0){
-        newsCount.innerText = `${data.length}`;
-        choosedCategory.innerText = `${categoryName}`;
-        notifySection.classList.remove('pb-96');
         data.forEach(news => {
             const newCard = document.createElement('div');
             newCard.innerHTML = `
