@@ -6,10 +6,6 @@
     color: #CDCDCD;
 }
 
-html{
-    background-color: #CDCDCD;
-}
-
 footer {
     position: fixed;
     left: 0;
@@ -18,6 +14,3 @@ footer {
     background-color: #CDCDCD;
     text-align: center;
   }
-body > ul{
-    list-style-type: circle;
-}

@@ -17,8 +17,8 @@ const displayCategories = (data) =>{
         <p>${categoryName}</p>
         <p class='hidden'>${categoryId}</p>
         `;
-        newButton.classList.add('btn','btn-ghost','normal-case','text-lg','px-3','xl:px-7','block','mx-auto','md:inline')
-        categoryContainer.appendChild(newButton)
+        newButton.classList.add('btn','btn-ghost','normal-case','text-lg','2xl:px-7','block','mx-auto','md:inline')
+        categoryContainer.appendChild(newButton);
 
         newButton.addEventListener('click', function(){
             toggleSpinner(true);
@@ -67,7 +67,7 @@ const displayNews = (data, categoryName) =>{
                     <figure><img class='lg:w-96 lg:h-64 p-4' src="${news.image_url}" alt="Album"></figure>
                     <div class="card-body">
                       <h2 class="card-title">${news.title ? news.title : 'No Title Found'}</h2>
-                      <p class='text-ellipsis overflow-hidden md:h-14'>${news.details ? news.details.slice(0,400) : 'No Details Found'}...</p>
+                      <p>${news.details ? news.details.slice(0,400) : 'No Details Found'}...</p>
                       <div class="card-actions justify-around items-center">
                         <div class='flex items-center'>
                             <div>
@@ -75,7 +75,7 @@ const displayNews = (data, categoryName) =>{
                             </div>
                             <div>
                                 <p>${news.author.name ? news.author.name : 'No Author Name'}</p>
-                                <p>${news.author.published_date ? news.author.published_date : 'No Date Record'}</p>
+                                <p class='pr-4 sm:pr-0'>${news.author.published_date ? news.author.published_date : 'No Date Record'}</p>
                             </div>
                         </div>
                         <div class='flex items-center'>
@@ -156,10 +156,14 @@ const toggleSpinner = status => {
         loaderSection.classList.add('hidden');
     }
 }
+function refresh(elementId){
+    const button = document.getElementById(elementId);
+    button.addEventListener('click', function(){
+        window.location.reload();
+    })   
+}
 
-// const detailsButton = document.getElementById('btn-details');
-// detailsButton.addEventListener('click', function(){
-//     console.log(this)
-// })
+refresh('site-name');
+refresh('home');
 
 loadCategories();
