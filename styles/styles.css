@@ -5,3 +5,19 @@
 .divider-color{
     color: #CDCDCD;
 }
+
+html{
+    background-color: #CDCDCD;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #CDCDCD;
+    text-align: center;
+  }
+body > ul{
+    list-style-type: circle;
+}

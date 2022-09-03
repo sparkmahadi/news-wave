@@ -64,10 +64,10 @@ const displayNews = (data, categoryName) =>{
             const newCard = document.createElement('div');
             newCard.innerHTML = `
             <div class="card lg:card-side bg-base-100 shadow-xl my-2">
-                    <figure><img class='lg:w-96 lg:h-72 p-4' src="${news.image_url}" alt="Album"></figure>
+                    <figure><img class='lg:w-96 lg:h-64 p-4' src="${news.image_url}" alt="Album"></figure>
                     <div class="card-body">
                       <h2 class="card-title">${news.title ? news.title : 'No Title Found'}</h2>
-                      <p>${news.details ? news.details.slice(0,400) : 'No Details Found'}...</p>
+                      <p class='text-ellipsis overflow-hidden md:h-14'>${news.details ? news.details.slice(0,400) : 'No Details Found'}...</p>
                       <div class="card-actions justify-around items-center">
                         <div class='flex items-center'>
                             <div>
