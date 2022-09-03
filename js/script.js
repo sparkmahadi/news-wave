@@ -82,7 +82,7 @@ const displayNews = (data, categoryName) =>{
                                 <p>${news.total_view ? news.total_view : 'Not Viewed'}</p>
                         </div>
                         <div>
-                            <label onclick='loadFullNews("${news._id}")' for="my-modal-3" class="btn modal-button btn-ghost font-bold">Details</label>
+                            <label onclick='loadFullNews("${news._id}")' for="my-modal-3" class="btn modal-button btn-ghost font-bold">Details ►</label>
                         </div>
                         </div>
                     </div>
