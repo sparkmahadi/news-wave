@@ -7,6 +7,7 @@ const loadCategories = async() =>{
 
 const categoryContainer = document.getElementById('categories');
 const displayCategories = (data) =>{
+    
     const newsArray = data.news_category;
     newsArray.forEach(category => {
         const categoryName = category.category_name;
@@ -20,6 +21,7 @@ const displayCategories = (data) =>{
         categoryContainer.appendChild(newButton)
 
         newButton.addEventListener('click', function(){
+            toggleSpinner(true);
             loadNews(categoryId, categoryName);
         })
     });
@@ -41,40 +43,41 @@ const loadNews = async(categoryId, categoryName) =>{
 const newsSection = document.getElementById('news');
 const newsCount = document.getElementById('items-count');
 const choosedCategory = document.getElementById('choosed-category');
+const notifySection = document.getElementById('notification');
 const displayNews = (data, categoryName) =>{
-    console.log(data);
     newsSection.innerHTML='';
     if(data.length > 0){
         newsCount.innerText = `${data.length}`;
         choosedCategory.innerText = `${categoryName}`;
+        notifySection.classList.remove('pb-96');
         data.forEach(news => {
             const newCard = document.createElement('div');
-            console.log(news)
             newCard.innerHTML = `
             <div class="card lg:card-side bg-base-100 shadow-xl my-2">
-                    <figure><img class='w-96 h-72 p-4' src="${news.image_url}" alt="Album"></figure>
+                    <figure><img class='lg:w-96 lg:h-72 p-4' src="${news.image_url}" alt="Album"></figure>
                     <div class="card-body">
-                      <h2 class="card-title">${news.title}</h2>
-                      <p>${news.details.slice(0,500)}...</p>
+                      <h2 class="card-title">${news.title ? news.title : 'No Title Found'}</h2>
+                      <p>${news.details ? news.details.slice(0,500) : 'No Details Found'}...</p>
                       <div class="card-actions justify-around items-center">
                         <div class='flex items-center'>
                             <div>
                                 <img class='w-10 rounded-full pr-2' src='${news.author.img ? news.author.img : 'No Image'}'>
                             </div>
                             <div>
-                                <p>${news.author.name ? news.author.name : 'No Author'}</p>
-                                <p>${news.author.published_date}</p></div>
+                                <p>${news.author.name ? news.author.name : 'No Author Name'}</p>
+                                <p>${news.author.published_date ? news.author.published_date : 'No Date Record'}</p>
+                            </div>
                         </div>
                         <div class='flex items-center'>
                                 <p><i class="fa-regular fa-eye pr-2"></i></p>
-                                <p>${news.total_view ? news.total_view : 'Not Viewed'}</p></div>
-                            <div>
-                                <button id='btn-details' class="btn btn-ghost font-bold">Details</button>
-                            </div>
+                                <p>${news.total_view ? news.total_view : 'Not Viewed'}</p>
                         </div>
-                      </div>
+                        <div>
+                            <label onclick='loadFullNews("${news._id}")' for="my-modal-3" class="btn modal-button btn-ghost font-bold">Details</label>
+                        </div>
+                        </div>
                     </div>
-                  </div>
+            </div>
             `;
     
             newsSection.appendChild(newCard);
@@ -83,8 +86,66 @@ const displayNews = (data, categoryName) =>{
     else{
         newsCount.innerText='No';   
     }
+    toggleSpinner(false);
 }
 
+const loadFullNews = async(newsId) =>{
+    try{
+        const url = `https://openapi.programming-hero.com/api/news/${newsId}`;
+    const res = await fetch(url)
+    const data = await res.json()
+    displayFullNews(data);
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+
+const displayFullNews = (data) =>{
+    toggleSpinner(true);
+    const news = data.data[0];
+    const modalDiv = document.getElementById('modal');
+    modalDiv.innerHTML=`
+    <div class="lg:max-w-screen-md xl:max-w-screen-xl max-h-full modal-box relative">
+        <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+        <div class='mt-5'>
+            <div class="card bg-base-100">
+            <figure><img class='w-full' src="${news.image_url}" alt="news image" /></figure>
+            <div class="card-body">
+            <h2 class="card-title text-3xl">${news.title ? news.title : 'No Title Found'}</h2>
+            <p>${news.details ? news.details : 'No Details Found'}</p>
+                    <div class="card-actions justify-around items-center pt-5">
+                    <div class='flex items-center'>
+                        <div>
+                            <img class='w-20 rounded-full pr-2' src='${news.author.img ? news.author.img : 'No Image'}'>
+                        </div>
+                        <div class='pl-3'>
+                            <p class='text-2xl'>Author: ${news.author.name ? news.author.name : 'No Author Name'}</p>
+                            <p>Published on : ${news.author.published_date ? news.author.published_date : 'No Date Record'}</p>
+                        </div>
+                    </div>
+                    <div class='flex items-center'>
+                            <p><i class="fa-regular fa-eye pr-2"></i></p>
+                            <p>Views : ${news.total_view ? news.total_view : 'Not Viewed'}</p>
+                    </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    `;
+    toggleSpinner(false)
+}
+
+const toggleSpinner = status => {
+    const loaderSection = document.getElementById('spinner');
+    if(status){
+        loaderSection.classList.remove('hidden')
+    }
+    else{
+        loaderSection.classList.add('hidden');
+    }
+}
 
 // const detailsButton = document.getElementById('btn-details');
 // detailsButton.addEventListener('click', function(){
