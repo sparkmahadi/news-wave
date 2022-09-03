@@ -1,8 +1,13 @@
 const loadCategories = async() =>{
-    const url = `https://openapi.programming-hero.com/api/news/categories`;
+    try{
+        const url = `https://openapi.programming-hero.com/api/news/categories`;
     const res = await fetch(url)
     const data = await res.json()
     displayCategories(data.data);
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 const categoryContainer = document.getElementById('categories');
@@ -35,7 +40,7 @@ const loadNews = async(categoryId, categoryName) =>{
     displayNews(data.data, categoryName);
     }
     catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
 
@@ -111,7 +116,6 @@ const loadFullNews = async(newsId) =>{
 }
 
 const displayFullNews = (data) =>{
-    toggleSpinner(true);
     const news = data.data[0];
     const modalDiv = document.getElementById('modal');
     modalDiv.innerHTML=`
@@ -143,7 +147,6 @@ const displayFullNews = (data) =>{
         </div>
     </div>
     `;
-    toggleSpinner(false);
 }
 
 const toggleSpinner = status => {
