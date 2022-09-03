@@ -67,7 +67,7 @@ const displayNews = (data, categoryName) =>{
                     <figure><img class='lg:w-96 lg:h-72 p-4' src="${news.image_url}" alt="Album"></figure>
                     <div class="card-body">
                       <h2 class="card-title">${news.title ? news.title : 'No Title Found'}</h2>
-                      <p>${news.details ? news.details.slice(0,500) : 'No Details Found'}...</p>
+                      <p>${news.details ? news.details.slice(0,400) : 'No Details Found'}...</p>
                       <div class="card-actions justify-around items-center">
                         <div class='flex items-center'>
                             <div>
@@ -122,7 +122,7 @@ const displayFullNews = (data) =>{
             <div class="card bg-base-100">
             <figure><img class='w-full' src="${news.image_url}" alt="news image" /></figure>
             <div class="card-body">
-            <h2 class="card-title text-3xl">${news.title ? news.title : 'No Title Found'}</h2>
+            <h2 class="card-title lg:text-3xl">${news.title ? news.title : 'No Title Found'}</h2>
             <p>${news.details ? news.details : 'No Details Found'}</p>
                     <div class="card-actions justify-around items-center pt-5">
                     <div class='flex items-center'>
@@ -130,7 +130,7 @@ const displayFullNews = (data) =>{
                             <img class='w-20 rounded-full pr-2' src='${news.author.img ? news.author.img : 'No Image'}'>
                         </div>
                         <div class='pl-3'>
-                            <p class='text-2xl'>Author: ${news.author.name ? news.author.name : 'No Author Name'}</p>
+                            <p class='md:text-2xl'>Author: ${news.author.name ? news.author.name : 'No Author Name'}</p>
                             <p>Published on : ${news.author.published_date ? news.author.published_date : 'No Date Record'}</p>
                         </div>
                     </div>
